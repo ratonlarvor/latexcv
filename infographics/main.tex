@@ -113,6 +113,7 @@
 
 %extended aligning of tabular cells
 \usepackage{array}
+\usepackage{hyperref}
 
 % custom column width
 \newcolumntype{x}[1]{%
@@ -332,18 +333,19 @@
 
 \begin{tabular*}{1\textwidth}{ c c c}
 	\parbox[c]{0.4\linewidth}{
-		\colorbox{thirdcol}{\LARGE{\textcolor{titletext}{\textbf{\uppercase{Yannick LARVOR}}} }}\\
+		\colorbox{thirdcol}{\huge{\textcolor{titletext}{\textbf{\uppercase{Yannick LARVOR}}} }}\\
 		\Large{\textcolor{thirdcol}{\textsc{ Senior Java Developer}}}\\
+		\normalsize{\textcolor{thirdcol}{\textsc{   Permis G}}}\\
 	}&
 	\parbox{0.25\textwidth}{
-	\icontext{MapMarker}{12}{1710 route du chef lieu}\\
-	\icontext{MapMarker}{12}{7427,  Marlioz, France}\\
+	\icontext{Home}{12}{1710 route du chef lieu}\\
+	\icontext{MapMarker}{12}{74270,  Marlioz, France}\\
 	\icontext{MobilePhone}{12}{+41 79 558 62 79}\\
 	}&
 	\parbox{0.3\textwidth}{
 	\icontext{Send}{12}{{\small larvor.yannick@gmail.com}}\\	
-	\icontext{Github}{12}{github.com/ratonlarvor}\\
-	\icontext{Twitter}{12}{@RatonLarvor}\\
+	\icontext{Github}{12}{\href{github.com/ratonlarvor}{ratonlarvor}}\\
+	\icontext{LinkedinSquare}{12}{\href{https://www.linkedin.com/in/yannicklarvor}{yannicklarvor}}\\
 	}
 \end{tabular*}
 
@@ -361,19 +363,19 @@
 
 	\mbox{
 		\parbox[c][3cm][c]{0.29\textwidth}{
-		\textcolor{textcol}{Developpeur Senior Java FullStack depuis 10 ans. Spécialisé dans la transformation Digitale et le Framework Spring Boot.}
+		\textcolor{textcol}{Developpeur Senior Java FullStack depuis 10 ans. \\ \\Spécialisé dans la transformation digitale et le Framework Spring Boot.}
 		}
 		\hspace{10pt}
 		\parbox[c][3cm][c]{0.32\textwidth}{
 			\begin{center}
-			\factbubble{\Large{\textcolor{sectcol}{\textbf{Master}}}\\\small{\textcolor{sectcol}{\textbf{Objets Répartis}}}}{1}{maincol}{sectcol}{thirdcol}\\
-			\textcolor{textcol}{dernier diplôme à }\\
-			\textcolor{textcol}{\textbf{l'Université du Havre}}
+			\factbubble{\Large{\textcolor{sectcol}{\textbf{10 ans}}}\\\small{\textcolor{sectcol}{\textbf{d'expérience}}}}{1}{maincol}{sectcol}{thirdcol}\\
+			\textcolor{textcol}{dont 7 ans en Suisse chez}\\
+			\textcolor{textcol}{\textbf{Smartwave SA}}
 			\end{center}
 		}
 		\hspace{10pt}
 		\parbox[c][3cm][c]{0.29\textwidth}{
-		\textcolor{textcol}{Je souhaite ...}
+		\textcolor{textcol}{Je suis à la recherche d'un nouveau défis professionnel dans le domaine bancaire afin d'évoluer vers la gestion de projets.}
 		}
 	}
 	\vspace{34pt}
@@ -382,12 +384,12 @@
 %	SKILLS AND TECHNOLOGIES
 %----------------------------------------------------------------------------------------
 
-	\cvsect{Skills and Technologies}{0.49}{thirdcol}{textcol}\\[4pt]
+	\cvsect{Compétences}{0.49}{thirdcol}{textcol}\\[4pt]
 	\mbox{
 		
 		% TEXT BOX
 		\parbox[b][150pt][c]{0.35\textwidth}{
-			\textcolor{textcol}{Mes principales domaines d'expertise à ce jour dans le développement d'applications Web.}\\
+			\textcolor{textcol}{J'ai acquis de solides connaissances techniques dans le domaine du développement d'applications Web.}\\
 		
 			% LANGUAGES
 			\cvsect{Langues}{0.49}{thirdcol}{textcol}\\[4pt]
@@ -398,11 +400,11 @@
 
 		% PIE CHART	
 		\begin{piechart}{360}{2}{bgcol}{textcol}{sectcol}
-			\slice{5}{Documentum}{thirdcol}
-			\slice{10}{Maintenance}{fourthcol}
-			\slice{10}{Business Analyse}{fifthcol}
-			\slice{30}{AngularJS}{secondcol}
-			\slice{45}{Spring Boot}{maincol}
+			\slice{30}{Front-End}{secondcol}		
+			\slice{35}{Back-End}{maincol}						
+			\slice{20}{Business Analyse}{thirdcol}		
+			\slice{15}{Maintenance}{fourthcol}				
+			\slice{10}{Commercial}{fifthcol}
 		\end{piechart}\\
 	}
 	\begin{center}
@@ -414,17 +416,16 @@
 	% BAR CHART
 	\mbox{\hspace{-14pt}
 		\begin{barchart}{10}{5.5}{sectcol}{textcol}{sectcol}{maincol}{secondcol}{thirdcol}
+			\baritem{95}{Java / Spring}{95}{0}{0}			
 			\baritem{80}{AngularJS}{0}{0}{80}			
-			\baritem{95}{Java}{95}{0}{0}
-			\baritem{80}{Spring}{85}{0}{0}
-			\baritem{75}{Microservices}{0}{0}{75}
+			\baritem{70}{Microservices}{0}{0}{70}
 			\baritem{60}{Maven}{0}{0}{60}
-			\baritem{35}{Documentum}{0}{0}{40}
+			\baritem{35}{Documentum}{0}{0}{35}
 		\end{barchart}
 		\hspace{10pt}
 
 		% TEXTBOX
-		\parbox[b][100pt][c]{0.3\textwidth}{\textcolor{textcol}{Mes derniers projets sont se composent essentiellement de Java 8 et AngularJS. Ils présentent une forte complexité du fait d'un nombre important d'intégrations.}}
+		\parbox[b][100pt][c]{0.3\textwidth}{\textcolor{textcol}{Mes derniers projets se composent essentiellement de \textbf{Java 8} et \textbf{AngularJS} avec une utilisation accrue de différents modules de \textbf{Spring Boot}. \\Ils présentent une forte complexité du fait d'un nombre élevé d'intégrations.}}
 	}
 	\begin{center}
 	\begin{tikzpicture}
@@ -434,30 +435,42 @@
 	\begin{center}
 	\mbox{
 		\parbox[b][2cm][c]{4cm}{
-			\textcolor{textcol}{J'utilise Git et IntelliJ régulièrement dans mes projets. J'ai d'excellentes conaissances en DevOps et Documentum.}
+			\textcolor{textcol}{J'utilise régulièrement Maven, Git et IntelliJ. \\Je souhaite maintenant approfondir mes connaissances en DevOps et Project Management.}
 		}\hspace{12pt}
-		\bubbles{5/IntelliJ, 6/git, 4/Jenkins, 3/Docker, 3/OpenText}{\cvsection{Technologies}}		
+		\bubbles{4/IntelliJ, 6/git, 4/Maven, 2/Docker, 1/Kubernetes}{\cvsection{Technologies}}		
 	}
 	\end{center}
 %---------------------------------------------------------------------------------------
 %	ACTIVITIES
 %----------------------------------------------------------------------------------------
-	\cvsect{Actvities}{0.49}{thirdcol}{textcol}\\[20pt]
+	\cvsect{Actvités}{0.49}{thirdcol}{textcol}\\[20pt]
 	\mbox{
 		
 		% FACT BUBBLE
-		\parbox[b][3cm][c]{3cm}{
-			\factbubble{\HUGE{\textcolor{sectcol}{\textbf{20}}}\\\large{\textcolor{sectcol}{\textbf{ans}}}}{0.85}{maincol}{sectcol}{thirdcol}\\
-			\textcolor{textcol}{de travail en équipe}\\
-		}
+%		\parbox[b][3.5cm][c]{3.5cm}{
+%			\factbubble{\Huge{\textcolor{sectcol}{\textbf{20}}}\\\large{\textcolor{sectcol}{\textbf{ans}}}}{0.85}{maincol}{sectcol}%{thirdcol}\\
+%			\textcolor{textcol}{de travail en équipe}\\
+%		}
+		% SQUARE BARS
+		\squares{15/\OE{}nologie,20/Cinéma,20/Informatique,20/Associatif,50/Basket}{1}
 
 		% TEXT BOX
-		\parbox[b][3cm][c]{4cm}{
-			\textcolor{textcol}{Je pratique le basket au niveau départemental depuis 20 ans. Je m'occupe également d'une petite association locale : \textbf{Le Marlio'Z Café}}
+		\parbox[b][3cm][c]{7cm}{
+			\textcolor{textcol}{Je suis un passionné de basket que je pratique depuis 20 ans au niveau départemental.}
+			\\
+			\\
+			\textcolor{textcol}{J'aide une petite association locale (\textbf{Le Marlio'Z Café}}) à gérer leur communication informatique.
+			\\
+			\\
+			\\
+			\\
+			\\
+			\\
+			\\
+			
 		}
 
-		% SQUARE BARS
-		\squares{50/Basket,20/Associatif,20/Veille Technologique,20/Cinéma,10/Oenologie}{1}
+		
 	}
 \end{minipage}
 \begin{minipage}{0.05\textwidth}
@@ -471,9 +484,9 @@
 %---------------------------------------------------------------------------------------
 %	EXPERIENCE / EDUCATION
 %----------------------------------------------------------------------------------------
-\cvsect{Experience and Education}{0.4}{thirdcol}{textcol}\\[16pt]
+\cvsect{Parcours Professionel}{0.4}{thirdcol}{textcol}\\[16pt]
 
-\hspace{60pt}\mbox{\legend{Experience}{1.8cm}{maincol} \legend{Events}{1.1cm}{secondcol} \legend{Education}{1.5cm}{thirdcol}}
+\hspace{60pt}\mbox{\legend{Missions}{1.8cm}{maincol} \legend{Events}{1.1cm}{secondcol} \legend{Formations}{1.5cm}{thirdcol}}
 \vspace{-40pt}
 \begin{center}
 
@@ -485,11 +498,11 @@
 
 \cvevent{9/2008}{8/2011}{Entrée chez \textbf{Atos Origin}}{Atos Origin}{}{secondcol}{1}
      
-\cvevent{1/2009}{8/2011}{OBS: {\footnotesize Responsable projet \textit{TCSNMP}}}{Atos Origin}{}{maincol}{1}
+\cvevent{1/2009}{8/2011}{OBS : {\footnotesize Responsable projet \textit{TCSNMP}}}{Atos Origin}{}{maincol}{1}
 
-\cvevent{9/2009}{2/2010}{OBS: {\footnotesize Développeur projet \textit{Topologie}}}{Atos Origin}{}{maincol}{1}
+\cvevent{9/2009}{2/2010}{OBS : {\footnotesize Développeur projet \textit{Topologie}}}{Atos Origin}{}{maincol}{1}
         
-\cvevent{2/2010}{8/2011}{OBS: {\footnotesize Responsable projet \textit{Igor}}}{Atos Origin}{}{maincol}{1}
+\cvevent{2/2010}{8/2011}{OBS : {\footnotesize Responsable projet \textit{Igor}}}{Atos Origin}{}{maincol}{1}
 
 \cvevent{8/2011}{8/2011}{Entrée chez \textbf{Smartwave SA}}{Smartwave}{}{secondcol}{1}
 
@@ -500,6 +513,8 @@
 \cvevent{10/2012}{1/2013}{Merck : {\footnotesize Développeur JBoss Seam}}{Smartwave}{}{maincol}{1}
 
 \cvevent{1/2013}{4/2013}{EBU : {\footnotesize Purchase Order System}}{Smartwave}{}{maincol}{1}
+
+\cvevent{4/2013}{4/2013}{Certifié \textbf{WSO} Developer}{Londres}{}{thirdcol}{0}
 
 \cvevent{11/2013}{2/2014}{Pictet : {\footnotesize Développeur Flex}}{Smartwave}{}{maincol}{1}
 
@@ -514,6 +529,8 @@
 \cvevent{3/2016}{6/2016}{HUG : {\footnotesize Projet WEASIS}}{Smartwave}{}{maincol}{1}
 
 \cvevent{9/2016}{1/2017}{UBP : {\footnotesize Support Documentum}}{Smartwave}{}{maincol}{1}
+
+\cvevent{5/2017}{5/2017}{Accrédité SECRET par l'UBP}{Smartwave}{}{secondcol}{1}
 
 \cvevent{9/2017}{1/2018}{UBP : {\footnotesize Security Transfer Application}}{Smartwave}{}{maincol}{1}
 
