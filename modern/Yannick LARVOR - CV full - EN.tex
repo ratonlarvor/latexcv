@@ -1,0 +1,489 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2015 Jan Küster
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+
+%============================================================================%
+%
+%	DOCUMENT DEFINITION
+%
+%============================================================================%
+
+%we use article class because we want to fully customize the page and dont use a cv template
+\documentclass[10pt,A4]{article}	
+
+
+%----------------------------------------------------------------------------------------
+%	ENCODING
+%----------------------------------------------------------------------------------------
+
+%we use utf8 since we want to build from any machine
+\usepackage[utf8]{inputenc}		
+
+%----------------------------------------------------------------------------------------
+%	LOGIC
+%----------------------------------------------------------------------------------------
+
+% provides \isempty test
+\usepackage{xifthen}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% some tex-live fonts - choose your own
+
+%\usepackage[defaultsans]{droidsans}
+%\usepackage[default]{comfortaa}
+%\usepackage{cmbright}
+\usepackage[default]{raleway}
+%\usepackage{fetamont}
+%\usepackage[default]{gillius}
+%\usepackage[light,math]{iwona}
+%\usepackage[thin]{roboto} 
+
+% set font default
+\renewcommand*\familydefault{\sfdefault} 	
+\usepackage[T1]{fontenc}
+
+% more font size definitions
+\usepackage{moresize}		
+
+
+%----------------------------------------------------------------------------------------
+%	PAGE LAYOUT  DEFINITIONS
+%----------------------------------------------------------------------------------------
+
+%debug page outer frames
+%\usepackage{showframe}			
+
+
+%define page styles using geometry
+\usepackage[a4paper]{geometry}		
+
+% for example, change the margins to 2 inches all round
+\geometry{top=1.75cm, bottom=-.6cm, left=1.5cm, right=1.5cm} 	
+
+%use customized header
+\usepackage{fancyhdr}				
+\pagestyle{fancy}
+
+%less space between header and content
+\setlength{\headheight}{-5pt}		
+
+
+%customize entries left, center and right
+\lhead{}
+\chead{ \small{Yannick LARVOR $\cdot$ FullStack Senior Java Consultant $\cdot$  10 years of experience $\cdot$  \textcolor{sectcol}{\textbf{larvor.yannick@gmail.com}}  $\cdot$ +41 79 558 62 79}}
+\rhead{}
+
+
+%indentation is zero
+\setlength{\parindent}{0mm}
+
+%----------------------------------------------------------------------------------------
+%	TABLE /ARRAY DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for layouting tables
+\usepackage{multicol}			
+\usepackage{multirow}
+
+%extended aligning of tabular cells
+\usepackage{array}
+
+\newcolumntype{x}[1]{%
+>{\raggedleft\hspace{0pt}}p{#1}}%
+
+
+%----------------------------------------------------------------------------------------
+%	GRAPHICS DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for header image
+\usepackage{graphicx}
+
+%for floating figures
+\usepackage{wrapfig}
+\usepackage{float}
+%\floatstyle{boxed} 
+%\restylefloat{figure}
+
+%for drawing graphics		
+\usepackage{tikz}				
+\usetikzlibrary{shapes, backgrounds,mindmap, trees}
+
+
+%----------------------------------------------------------------------------------------
+%	Color DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+\usepackage{color}
+
+%accent color
+\definecolor{sectcol}{RGB}{255,150,0}
+
+%dark background color
+\definecolor{bgcol}{RGB}{110,110,110}
+
+%light background / accent color
+\definecolor{softcol}{RGB}{225,225,225}
+
+
+%============================================================================%
+%
+%
+%	DEFINITIONS
+%
+%
+%============================================================================%
+
+%----------------------------------------------------------------------------------------
+% 	HEADER
+%----------------------------------------------------------------------------------------
+
+% remove top header line
+\renewcommand{\headrulewidth}{0pt} 
+
+%remove botttom header line
+\renewcommand{\footrulewidth}{0pt}	  	
+
+%remove pagenum
+\renewcommand{\thepage}{}	
+
+%remove section num		
+\renewcommand{\thesection}{}			
+
+%----------------------------------------------------------------------------------------
+% 	ARROW GRAPHICS in Tikz
+%----------------------------------------------------------------------------------------
+
+% a six pointed arrow poiting to the left
+\newcommand{\tzlarrow}{(0,0) -- (0.2,0) -- (0.3,0.2) -- (0.2,0.4) -- (0,0.4) -- (0.1,0.2) -- cycle;}	
+
+% include the left arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\larrow}[1]
+{\begin{tikzpicture}[scale=0.58]
+	 \filldraw[fill=#1!100,draw=#1!100!black]  \tzlarrow
+ \end{tikzpicture}
+}
+
+% a six pointed arrow poiting to the right
+\newcommand{\tzrarrow}{ (0,0.2) -- (0.1,0) -- (0.3,0) -- (0.2,0.2) -- (0.3,0.4) -- (0.1,0.4) -- cycle;}
+
+% include the right arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\rarrow}
+{\begin{tikzpicture}[scale=0.7]
+	\filldraw[fill=sectcol!100,draw=sectcol!100!black] \tzrarrow
+ \end{tikzpicture}
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	custom sections
+%----------------------------------------------------------------------------------------
+
+% create a coloured box with arrow and title as cv section headline
+% param 1: section title
+%
+\newcommand{\cvsection}[1]
+{
+\colorbox{sectcol}{\mystrut \makebox[1\linewidth][l]{
+\larrow{bgcol} \hspace{-8pt} \larrow{bgcol} \hspace{-8pt} \larrow{bgcol} \textcolor{white}{\textbf{#1}}\hspace{4pt}
+}}\\
+}
+
+%create a coloured arrow with title as cv meta section section
+% param 1: meta section title
+%
+\newcommand{\metasection}[2]
+{
+\begin{tabular*}{1\textwidth}{p{2.4cm} p{10cm}}
+\larrow{bgcol}	\normalsize{\textcolor{sectcol}{{\small #1}}}&#2\\[12pt]
+\end{tabular*}
+}
+
+%----------------------------------------------------------------------------------------
+%	 CV EVENT
+%----------------------------------------------------------------------------------------
+
+% creates a stretched box as cv entry headline followed by two paragraphs about 
+% the work you did
+% param 1:	event time i.e. 2014 or 2011-2014 etc.
+% param 2:	event name (what did you do?)
+% param 3:	institution (where did you work / study)
+% param 4:	what was your position
+% param 5:	some words about your contributions
+%
+\newcommand{\cvevent}[3]
+{
+\vspace{8pt}
+	\begin{tabular*}{1\textwidth}{p{2.3cm}  p{10.8cm} x{3.9cm}}
+ \textcolor{bgcol}{#1}& \textbf{#2} & \vspace{2.5pt}\textcolor{sectcol}{#3}
+
+	\end{tabular*}
+\vspace{-12pt}
+\textcolor{softcol}{\hrule}
+}
+
+\newcommand{\cveventa}[4]
+{
+\vspace{8pt}
+	\begin{tabular*}{1\textwidth}{p{2.3cm}  p{10.8cm} x{3.9cm}}
+ \textcolor{bgcol}{#1}& \textbf{#2} & \vspace{2.5pt}\textcolor{sectcol}{#3}
+
+	\end{tabular*}
+\vspace{-12pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+	\begin{tabular*}{1\textwidth}{p{2.3cm} p{14.4cm}}
+&		 \larrow{bgcol}  #4\\[3pt]
+	\end{tabular*}
+}
+
+\newcommand{\cveventb}[5]
+{
+\vspace{8pt}
+	\begin{tabular*}{1\textwidth}{p{2.3cm}  p{10.8cm} x{3.9cm}}
+ \textcolor{bgcol}{#1}& \textbf{#2} & \vspace{2.5pt}\textcolor{sectcol}{#3}
+
+	\end{tabular*}
+\vspace{-12pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+	\begin{tabular*}{1\textwidth}{p{2.3cm} p{14.4cm}}
+&		 \larrow{bgcol}  #4\\[3pt]
+&		 \larrow{bgcol}  #5\\[3pt]
+	\end{tabular*}
+}
+
+\newcommand{\cveventc}[6]
+{
+\vspace{8pt}
+	\begin{tabular*}{1\textwidth}{p{2.3cm}  p{10.8cm} x{3.9cm}}
+ \textcolor{bgcol}{#1}& \textbf{#2} & \vspace{2.5pt}\textcolor{sectcol}{#3}
+
+	\end{tabular*}
+\vspace{-12pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+	\begin{tabular*}{1\textwidth}{p{2.3cm} p{14.4cm}}
+&		 \larrow{bgcol}  #4\\[3pt]
+&		 \larrow{bgcol}  #5\\[3pt]
+&		 \larrow{bgcol}  #6\\[3pt]
+	\end{tabular*}
+}
+
+% creates a stretched box as 
+\newcommand{\cveventmeta}[2]
+{
+	\mbox{\mystrut \hspace{87pt}\textit{#1}}\\
+	#2
+}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM STRUT FOR EMPTY BOXES
+%----------------------------------------- -----------------------------------------------
+\newcommand{\mystrut}{\rule[-.3\baselineskip]{0pt}{\baselineskip}}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM LOREM IPSUM
+%----------------------------------------------------------------------------------------
+\newcommand{\lorem}
+{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.}
+
+
+
+%============================================================================%
+%
+%
+%
+%	DOCUMENT CONTENT
+%
+%
+%
+%============================================================================%
+\begin{document}
+
+
+%use our custom fancy header definitions
+\pagestyle{fancy}	
+
+
+%---------------------------------------------------------------------------------------
+%	TITLE HEADLINE
+%----------------------------------------------------------------------------------------
+\vspace{-20.55pt}
+
+% use this for multiple words like working titles etc.
+%\hspace{-0.25\linewidth}\colorbox{bgcol}{\makebox[1.5\linewidth][c]{\hspace{46pt}\HUGE{\textcolor{white}{\textsc{Jan Küster}} } \textcolor{sectcol}{\rule[-1mm]{1mm}{0.9cm}} \parbox[b]{5cm}{   \large{ \textcolor{white}{{IT Consultant}}}\\
+% \large{ \textcolor{white}{{Resume}}}}
+%}}
+
+% use this for single words, e.g. CV or RESUME etc.
+\hspace{-0.25\linewidth}\colorbox{bgcol}{\makebox[1.5\linewidth][c]{\HUGE{\textcolor{white}{\textsc{Yannick LARVOR}} } \textcolor{sectcol}{\rule[-1mm]{1mm}{0.9cm}} \LARGE{\textcolor{white}{\textsc{33 years old}} } }}
+
+
+%----------------------------------------------------------------------------------------
+%	HEADER IMAGE
+%----------------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{flushright}
+	\includegraphics[width=0.25 \linewidth]{profil.png}	%trimming relative to image size!
+\end{flushright}
+\end{figure}
+
+%---------------------------------------------------------------------------------------
+%	QR CODE (optional)
+%----------------------------------------------------------------------------------------
+%\vspace{-136pt}
+%\hspace{0.75\linewidth}
+%\includegraphics[width=103pt]{qrcode}
+%\normalsize
+%\vspace{88pt}
+
+%---------------------------------------------------------------------------------------
+%	META SECTION
+%----------------------------------------------------------------------------------------
+
+\vspace{-114pt}
+
+\metasection{Title}{Senior Consultant at Smartwave for 7 years (G Permit)}
+\metasection{Expertise}{Analysis and project management in digital transformation} 
+\metasection{Skils}{Strong knowledge of Java and the Spring Framework. Daily practice of Java, Angular and Maven. Fast learner of new technologies.}
+\metasection{Hobbies}{Basketball, Cinema, Association, \OE{}nology}
+
+\vspace{6pt}
+
+%---------------------------------------------------------------------------------------
+%	SUMMARAY (optional)
+%----------------------------------------------------------------------------------------
+
+%\cvsection{Summary}\\
+%Digital media graduate with four years project experience in the field of technology based assessment. Specialized in development of test-scenario engines and innovative, rich media item formats. Master studies focused on teams from different disciplines and cultural backgrounds on solutions for complex problems.  Prior knowledge has been collected in he field of usability / accessibility during bachelor studies.\\
+
+%============================================================================%
+%
+%	CV SECTIONS AND EVENTS (MAIN CONTENT)
+%
+%============================================================================%
+
+%---------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+\cvsection{Experience}
+
+\cveventc{2018}{Technical leader of Credit Protocols}{UBP}{Tech Leader of a simulation tool for banking credits}{Multiple banking solution integrations including Appway, PrintNet and Documentum}{Java 8, AngularJS, Spring Boot, Appway, PrintNet, Documentum, Maven, Swagger, JIRA}
+
+\cveventc{2017}{Technical leader of Security Transfer Application}{UBP}{Analysed, created and developed a processing tool for international bank transfers. Project implementation and quotations. Core Banking integration. Creation of a customizable SWIFT editing interface}{The project is currently used by more than 600 managers worldwide and transfers approximately CHF 60 billion/year}{Java 8, AngularJS, Spring Boot, Documentum, SWIFT, Maven, IBM IQ, Swagger, JIRA}
+
+\cveventb{2016}{Documentum maintenance and support}{UBP}{Configuration of D2 interfaces. Created of TBO. Installation of Docbase. Documentum services digitalisation in REST using Spring Boot}{Java 8, Spring Boot, Documentum, Composer, Maven}
+
+\cveventc{2016}{WEASIS viewer enhancement}{HUG}{Open Source Project architected with OSGI and maintained by the Medical Imaging Department}{Created of an import module for non-radiological images. Creation of an editing tool classifying data in the Patient Folder}{Java 8, Git, OSGI, Elasticsearch, Spring Boot, DICOM}
+
+\cveventc{2015}{Technical Leader of the UN Portal project}{WTO}{Designed and developed a microservices web portal. The application is intended primarily for members of international organizations, providing them a unique entry point for authentication}{The service was implemented for the registration of international delegations for the WTO ministerials in December 2015}{IntelliJ, JHipster, Java 7, AngularJS, Spring Boot, Docker, Git, Bower}
+
+\cveventb{2014}{Bonita Soft Webinar}{{\small Smartwave / Bonita Soft}}{Created, developed and presented a Webinar concerning the use of Bonita Studio tools for mobile applications development}{IntelliJ, Java 7, JHipster, Bonita Studio, IONIC, AngularJS}
+
+\pagebreak
+\cvsection{Experience (next)}
+
+\cveventb{2014}{Software Factory and continuous integration with Documentum}{{\small Phillip Morris International}}{Installed a Software Factory from scratch. Supported the Documentum team in setting up and configuring quality control tools for electronic content management}{Maven, Junit, Jenkins, Sonar, Artifactory, Documentum}
+
+\cveventb{2014}{Social Media project initiator}{Firmenich}{Realized a a proof of concept analyzing Twitter keywords in real time. Collected data are used by Marketing Department to anticipate new trends}{Elasticsearch, Kibana, AngularJS, AWS}
+
+\cveventb{2013}{Flex developer}{Pictet}{Evolution of 2 similar Flex projects initiated in 2012. PDF printing management}{Java,  JUnit, Hibernate, Oracle, Git, Dozer mapping, Flex, JIRA}
+
+\cveventb{2012-2013}{JBoss Seam Developer}{EBU-UER}{Designed and implementated a Purchase Order System in JBoss Seam. Component development, front-end design manager, creation of a configurable cost estimation tool}{Eclipse, JEE6, Jboss Seam 3, JPA, JSF2, Bootstrap, JQuery, WSO2 ESB}
+
+\cveventb{2012}{Flex developer}{Pictet}{Developed and updated a version of an existing tool managing PDF prints. Pooling of Front-End and Back-End components}{FlexBuilder, Hibernate, Flex, Maven, JIRA}
+
+\cveventb{2010-2012}{Java/JBoss Seam developer}{Merck Serono}{Estimated, designed and managed JBoss Seam web applications}{Eclipse, JBoss/Seam, Hibernate, JQuery, Oracle 10g, SVN, Drools}
+
+\cvevent{2011}{Join Smartwave SA}{}
+
+\cveventb{2010-2011}{Head of Igor application}{{\small Orange Business Services}}{Managed evolutions of an ETL developed by Atos Origin}{Eclipse, Oracle, SVN, SQL, XML, HPQC, Ant}
+
+\cveventb{2009}{Tolologie project redesign}{{\small Orange Business Services}}{Restructured a project in Flex 4. Responsible for Client-Server integration. Created a tool that transforms SVG files into FXG using XSLT scripts}{Eclipse, Flex 4, CVS, XSLT, JAVA/J2EE, JavaScript}
+
+\cveventb{2008-2011}{Head of TCSNMP application}{{\small Orange Business Services}}{Wrote specifications for change requests and quotations. Upgraded of the JRules identification rules. Continuous quality improvement via Hudson and Sonar}{Linux(Platon), Eclipse, JRules, SVN, Java/JUnit, Maven, Hudson, Sonar}
+
+\cvevent{2008}{Joined Atos Origin}{}
+
+\pagebreak
+%---------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%--------------------------------------------------------------------------------------
+\cvsection{Trainings and certifications}
+
+\cvevent{2017}{SECRET accreditation by UBP}{Switzerland}
+
+\cvevent{2017}{\textit{Architecting Documentum Applications} training}{Switzerland}
+
+\cvevent{2015}{\textit{Customer Relationship Excellence} training}{Switzerland}
+
+\cvevent{2014}{\textit{SAP Fiori UX} certified}{Switzerland}
+
+\cvevent{2012}{\textit{WSO2 ESB developer} certified}{London}
+
+\bigskip
+
+\cvsection{Education}
+
+\cvevent{2008}{Master 2 - Computer Science (with merit)}{University of Le Havre}
+
+\cvevent{2007}{Master 1 - Computer Science (with mid-merit)}{University of Le Havre}
+
+\cveventb{2006}{Dundalk Institute of Technologie}{Ireland}{Bachelor of science in computing in software development (with merit)}{DUETI - Diplôme Universitaire d'Etudes Technologiques Internationales}
+
+\cveventa{2003 - 2005}{DUT Computer Science}{IUT of Le Havre}{software engineering option}
+
+\cveventa{June 2003}{Scientific Baccalaureate}{Le Havre}{Mathematics Specialty}
+%\textcolor{softcol}{\hrule}
+
+%-------------------------------------------------------------------------------------------------
+%	ARTIFICIAL FOOTER (fancy footer cannot exceed linewidth) 
+%--------------------------------------------------------------------------------------------------
+
+\null
+\vspace*{\fill}
+\hspace{-0.25\linewidth}\colorbox{bgcol}{\makebox[1.5\linewidth][c]{\mystrut \small \textcolor{white}{larvor.yannick@gmail.com} $\cdot$ \textcolor{white}{github.com/ratonlarvor}}}
+
+
+
+
+%============================================================================%
+%
+%
+%
+%	DOCUMENT END
+%
+%
+%
+%============================================================================%
+\end{document}
